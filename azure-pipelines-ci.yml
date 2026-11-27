@@ -1,0 +1,21 @@
+trigger:
+  branches:
+    include:
+        - develop
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  imageName: mi-app
+
+steps:
+- task: Docker@2
+  displayName: Build y push a ACR
+  inputs:
+    command: buildAndPush
+    repository: $(imageName)
+    containerRegistry: mi-conexion-ACR
+    tags: |
+      $(Build.BuildId)
+      latest
