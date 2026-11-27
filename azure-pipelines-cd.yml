@@ -3,8 +3,8 @@ trigger: none
 resources:
   pipelines:
     - pipeline: CI
-      source: mi-app-CI
-      trigger: true
+    source: mi-app-CI
+    trigger: true
 
 pool:
   vmImage: ubuntu-latest
@@ -13,9 +13,9 @@ steps:
 - task: Kubernetes@1
   displayName: Deploy a AKS
   inputs:
-    connectionType: Azure Resource Manager
-    azureSubscription: mi-conexion-Azure
-    azureResourceGroup: mi-resource-group
-    kubernetesCluster: mi-aks
-    command: apply
-    arguments: -f k8s/
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: 'mi-conexion-Azure'
+    azureResourceGroup: 'mi-app-rg'
+    kubernetesCluster: 'mi-aks'
+    command: 'apply'
+    arguments: '-f k8s/deployment.yaml -f k8s/service.yaml'
