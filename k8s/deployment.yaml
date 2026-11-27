@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mi-app
+  labels:
+    app: mi-app
 spec:
   replicas: 1
   selector:
@@ -13,7 +15,7 @@ spec:
         app: mi-app
     spec:
       containers:
-            - name: mi-app
-        image: TUACR.azurecr.io/mi-app:$(Build.BuildId)
-        ports:
-                - containerPort: 80
+        - name: mi-app
+          image: miappacrjoseivan.azurecr.io/mi-app:latest
+          ports:
+            - containerPort: 80
