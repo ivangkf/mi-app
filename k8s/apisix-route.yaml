@@ -7,7 +7,7 @@ spec:
     - name: mi-app
       match:
         hosts:
-          - mi-app.local
+          - "*"
         paths:
           - /*
       backends:
