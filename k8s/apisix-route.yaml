@@ -1,0 +1,15 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: mi-app-route
+spec:
+  http:
+    - name: mi-app
+      match:
+        hosts:
+          - mi-app.local
+        paths:
+          - /*
+      backends:
+        - serviceName: mi-app-service
+          servicePort: 80
